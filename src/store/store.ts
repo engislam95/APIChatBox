@@ -1,8 +1,9 @@
 import { configureStore } from "@reduxjs/toolkit";
+import swticherReducer from "./apiSwitcher/swticherSlice";
 
 export const store = configureStore({
   reducer: {
-    // ..
+    switcher: swticherReducer,
   },
 });
 

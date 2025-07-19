@@ -7,8 +7,8 @@ const Layout = () => {
   return (
     <div className="relative z-10 flex flex-col h-full p-4 md:p-6 space-y-4">
       {/* Header */}
-      <header className="hidden md:flex items-center justify-between text-white px-4 py-2 rounded-xl bg-primary shadow-lg">
-        <div className="text-xl font-bold">Available APIs</div>
+      <header className="flex items-center justify-between text-white px-4 py-2 rounded-xl md:bg-primary bg-transparent shadow-lg md:w-full w-1/2">
+        <div className="text-xl font-bold hidden md:block">Available APIs</div>
       </header>
       <div className="flex-1 flex overflow-hidden">
         {/* Sidebar  */}
