@@ -3,12 +3,14 @@ import { useAppSelector } from "../../../store/hooks";
 import { createSelectPanelsByApi } from "../../../store/panels/panelsSelectors";
 import { debouncedGlobalSearch$ } from "../../../rxjs/globalSearch";
 import { highlightMatches } from "../../../utils/highlightMatches";
+import { FaCat } from "react-icons/fa";
+import { RiDragMove2Fill } from "react-icons/ri";
+import { IoLogoOctocat } from "react-icons/io5";
 
 const selectCatPanels = createSelectPanelsByApi("cat");
 
 const CatPanel = () => {
   const catPanels = useAppSelector(selectCatPanels);
-
   const [searchTerm, setSearchTerm] = useState("");
 
   useEffect(() => {
@@ -34,9 +36,13 @@ const CatPanel = () => {
     <section className="w-full flex flex-col gap-3 mb-10 border-l-2 p-2 border-gray-500 rounded-xl shadow-sm shadow-gray-500">
       <header className="flex justify-between items-center gap-3 mb-2">
         <div className="flex gap-3">
+          <FaCat className="text-2xl text-secondary " />
           <span className="text-md text-gray-600 font-bold dark:text-gray-300">
             Cat Facts Panel
           </span>
+        </div>
+        <div className="flex">
+          <RiDragMove2Fill className="cursor-move text-pink-400 text-xl" />
         </div>
       </header>
 
@@ -55,7 +61,6 @@ const CatPanel = () => {
                 </div>
               );
             }
-
             if (catPanel.error) {
               return (
                 <p
@@ -81,13 +86,16 @@ const CatPanel = () => {
             return (
               <div
                 key={index}
-                className="cat-response bg-gradient-to-br from-blue-50 to-blue-100 dark:from-gray-800 dark:to-gray-900 border border-blue-200 dark:border-gray-700 shadow-lg rounded-2xl p-6 transition-transform transform mb-2 duration-200"
+                className="cat-response bg-[#4C3C7C]   border  border-gray-700 shadow-lg rounded-2xl p-3 transition-transform transform mb-2 duration-200"
               >
-                <p className="text-sm text-gray-800 dark:text-gray-200 leading-relaxed">
-                  <span className="font-medium">
+                <div className="text-sm text-gray-200 leading-relaxed flex gap-2 items-start">
+                  <p>
+                    <IoLogoOctocat className="text-xl mt-1" />
+                  </p>
+                  <p className="font-medium">
                     {highlightMatches(catPanel.data.fact, searchTerm)}
-                  </span>
-                </p>
+                  </p>
+                </div>
               </div>
             );
           })

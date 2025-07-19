@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { globalSearchSubject } from "../../rxjs/globalSearch";
+import { FiSearch } from "react-icons/fi";
 
 const GlobalSearch = () => {
   const [serachValue, setSearchValue] = useState<string>("");
@@ -11,6 +12,9 @@ const GlobalSearch = () => {
 
   return (
     <div className="mb-4 relative">
+      <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none text-gray-400">
+        <FiSearch className="w-4 h-4" />
+      </div>
       <input
         type="text"
         value={serachValue}

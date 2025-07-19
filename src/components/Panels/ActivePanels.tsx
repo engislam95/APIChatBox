@@ -25,9 +25,7 @@ const SortablePanel = ({ id, index, children }: SortablePanelProps) => {
   return (
     <div
       ref={ref}
-      className={`p-2 mb-2  rounded shadow transition ${
-        isDragging ? "opacity-50" : ""
-      }`}
+      className={`p-2 mb-2 transition ${isDragging ? "opacity-50" : ""}`}
     >
       {children}
     </div>

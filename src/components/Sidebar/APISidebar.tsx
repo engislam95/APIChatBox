@@ -2,13 +2,12 @@ import { useState } from "react";
 import { apiList } from "./helper";
 import { useAppDispatch, useAppSelector } from "../../store/hooks";
 import { switchApi } from "../../store/apiSwitcher/swticherSlice";
+import { RxHamburgerMenu } from "react-icons/rx";
 
 const APISidebar = () => {
   const dispatch = useAppDispatch();
   const activeApis = useAppSelector((state) => state.switcher.activeApis);
   const [isOpen, setIsOpen] = useState(false);
-
-  console.log("activeApis", activeApis);
 
   return (
     <>
@@ -18,7 +17,7 @@ const APISidebar = () => {
           className="md:hidden fixed top-1 left-4 p-10 z-50 bg-[#4C3C7C] text-white px-4 py-2 rounded-xl shadow-lg font-medium mb-10"
           onClick={() => setIsOpen(!isOpen)}
         >
-          ☰
+          <RxHamburgerMenu />
         </button>
       )}
 
