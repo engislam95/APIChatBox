@@ -1,11 +1,12 @@
+import Layout from "./pages/Layout";
 import "./App.css";
 
-function App() {
+const App = () => {
   return (
-    <>
-      <h1 className="bg-primary text-secondary"> hey</h1>
-    </>
+    <div className="flex">
+      <Layout />
+    </div>
   );
-}
+};
 
 export default App;
