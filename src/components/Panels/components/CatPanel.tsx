@@ -1,12 +1,32 @@
+import { useEffect, useState } from "react";
 import { useAppSelector } from "../../../store/hooks";
 import { createSelectPanelsByApi } from "../../../store/panels/panelsSelectors";
+import { debouncedGlobalSearch$ } from "../../../rxjs/globalSearch";
+import { highlightMatches } from "../../../utils/highlightMatches";
 
 const selectCatPanels = createSelectPanelsByApi("cat");
 
 const CatPanel = () => {
   const catPanels = useAppSelector(selectCatPanels);
 
-  if (catPanels.length === 0) {
+  const [searchTerm, setSearchTerm] = useState("");
+
+  useEffect(() => {
+    const sub = debouncedGlobalSearch$.subscribe((term) => {
+      setSearchTerm(term.toLowerCase());
+    });
+    return () => sub.unsubscribe();
+  }, []);
+
+  const filterCatPanel = (panel: any) => {
+    if (!searchTerm) return true;
+    const fact = panel?.data?.fact || "";
+    return fact.toLowerCase().includes(searchTerm);
+  };
+
+  const filteredPanels = catPanels.filter(filterCatPanel);
+
+  if (filteredPanels.length === 0) {
     return null;
   }
 
@@ -26,7 +46,7 @@ const CatPanel = () => {
             No panel for Cat API yet.
           </p>
         ) : (
-          catPanels.map((catPanel, index) => {
+          catPanels.filter(filterCatPanel).map((catPanel, index) => {
             if (catPanel.loading) {
               return (
                 <div key={index} className="animate-pulse mb-3">
@@ -64,8 +84,9 @@ const CatPanel = () => {
                 className="cat-response bg-gradient-to-br from-blue-50 to-blue-100 dark:from-gray-800 dark:to-gray-900 border border-blue-200 dark:border-gray-700 shadow-lg rounded-2xl p-6 transition-transform transform mb-2 duration-200"
               >
                 <p className="text-sm text-gray-800 dark:text-gray-200 leading-relaxed">
-                  🐱
-                  <span className="font-medium">{catPanel.data.fact}</span>
+                  <span className="font-medium">
+                    {highlightMatches(catPanel.data.fact, searchTerm)}
+                  </span>
                 </p>
               </div>
             );

@@ -1,10 +1,12 @@
-import { useState, type SetStateAction } from "react";
+import { useState } from "react";
+import { globalSearchSubject } from "../../rxjs/globalSearch";
 
 const GlobalSearch = () => {
   const [serachValue, setSearchValue] = useState<string>("");
 
-  const handleChange = (e: { target: { value: SetStateAction<string> } }) => {
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setSearchValue(e.target.value);
+    globalSearchSubject.next(e.target.value);
   };
 
   return (
