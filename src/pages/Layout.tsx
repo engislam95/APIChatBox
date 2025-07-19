@@ -2,8 +2,10 @@ import Chat from "../components/Chat/Chat";
 import ActivePanels from "../components/Panels/ActivePanels";
 import GlobalSearch from "../components/Search/GlobalSearch";
 import APISidebar from "../components/Sidebar/APISidebar";
+import { useParsedCommandListener } from "../hooks/useParsedCommandListener";
 
 const Layout = () => {
+  useParsedCommandListener();
   return (
     <div className="relative z-10 flex flex-col h-full p-4 md:p-6 space-y-4">
       {/* Header */}
@@ -20,7 +22,7 @@ const Layout = () => {
             <ActivePanels />
           </div>
           {/* Chat */}
-          <div className="bg-primary rounded-2xl shadow-xl  flex flex-col overflow-y-auto">
+          <div className="bg-primary rounded-2xl shadow-xl  ">
             <Chat />
           </div>
         </main>
