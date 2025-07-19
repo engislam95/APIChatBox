@@ -32,7 +32,7 @@ const ChatInput = () => {
         <button
           type="button"
           onClick={handleSerach}
-          className="px-4 py-2 rounded-md bg-blue-400 text-white hover:bg-blue-700 text-sm transition"
+          className="px-4 py-2 rounded-md bg-blue-400 text-white hover:bg-blue-700 text-sm transition cursor-pointer"
         >
           Send
         </button>
@@ -41,7 +41,7 @@ const ChatInput = () => {
           type="button"
           onClick={handleReset}
           title="Reset Chat"
-          className="px-3 py-2 rounded-md  bg-secondary  text-white hover:bg-pink-700 text-sm transition"
+          className="px-3 py-2 rounded-md  bg-secondary  text-white hover:bg-pink-700 text-sm transition cursor-pointer"
         >
           🗑️
         </button>

@@ -8,6 +8,8 @@ const APISidebar = () => {
   const activeApis = useAppSelector((state) => state.switcher.activeApis);
   const [isOpen, setIsOpen] = useState(false);
 
+  console.log("activeApis", activeApis);
+
   return (
     <>
       {/* Mobile*/}

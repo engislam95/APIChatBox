@@ -2,7 +2,7 @@ import { describe, it, expect, beforeEach } from "vitest";
 import { Subject, take, debounceTime, filter, map } from "rxjs";
 import type { ParsedCommand } from "../chatParser";
 
-function createParsedCommand$(input$: Subject<string>) {
+const createParsedCommand$ = (input$: Subject<string>) => {
   return input$.pipe(
     debounceTime(0), // no delay during tests
     map((input) => input.trim().toLowerCase()),
@@ -21,7 +21,7 @@ function createParsedCommand$(input$: Subject<string>) {
       } satisfies ParsedCommand;
     })
   );
-}
+};
 
 describe("parsedCommand$", () => {
   let input$: Subject<string>;
