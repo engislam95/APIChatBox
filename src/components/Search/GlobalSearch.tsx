@@ -18,6 +18,7 @@ const GlobalSearch = () => {
       <input
         type="text"
         value={serachValue}
+        data-testid="global-filter"
         placeholder="Global Search..."
         onChange={handleChange}
         className="bg-[#3B3864] text-sm pl-10 pr-4 py-2 rounded-lg w-full focus:outline-none placeholder-gray-400"

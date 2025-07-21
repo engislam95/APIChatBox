@@ -24,7 +24,7 @@ const Layout = () => {
             <ActivePanels />
           </div>
           {/* Chat */}
-          <div className="bg-primary rounded-2xl shadow-xl  ">
+          <div className="bg-primary rounded-2xl shadow-xl overflow-y-auto">
             <Chat />
           </div>
         </main>

@@ -1,0 +1,11 @@
+{
+  "latitude": 52.52,
+  "longitude": 13.41,
+  "current_weather": {
+    "temperature": 23.4,
+    "windspeed": 5.1,
+    "winddirection": 230,
+    "weathercode": 1,
+    "time": "2025-07-18T13:00"
+  }
+}
